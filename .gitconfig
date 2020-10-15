@@ -1,0 +1,33 @@
+# This is Git's per-user configuration file
+[user]
+	name = Matt Westerfield
+	email = matt.westerfield@heronsystems.com
+[alias]
+	fdiff = diff --name-only
+    graph = log --pretty=format:\"%C(auto)%d%Creset %C(cyan)%h%Creset - %C(yellow)%an%Creset, %C(magenta)%ar%Creset : %C(green)%s%Creset\" --graph
+	last = difftool HEAD~1
+    # Deletes local copies of branches except master and HEAD
+    local-branch-clean = "!f(){\
+        git branch | grep -v "master" | grep -v ^* | xargs git branch -D;\
+    }; f"
+[core]
+    editor = vim
+# [diff]
+#     tool = winmerge
+#     renameLimit = 10000
+# [difftool "winmerge"]
+#     cmd = "'C:/Program Files/WinMerge2011/WinMergeU.exe'" -e "$LOCAL" "$REMOTE"
+# [difftool "bc4"]
+#     cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\"
+# [merge]
+#     tool = bc4
+#     renameLimit = 10000
+# [mergetool]
+#     prompt = false
+#     keepBackup = false
+#     keepTemporaries = false
+# [mergetool "winmerge"]
+#     cmd = "'C:/Program Files/WinMerge2011/WinMergeU.exe'" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+# [mergetool "bc4"]
+#     cmd = 'C:/Program Files/Beyond Compare 4/BComp.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+#     trustExitCode = true
