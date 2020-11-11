@@ -137,6 +137,10 @@ mybatterywidget = require("battery-widget") { adapter = "BAT0", ac = "AC", widge
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+-- Create a calendar and attach it to the clock (options are to start on
+-- Monday, turn of the week of the year column, and highlight today purple)
+mycalendar = require("calendar") { fdow = 7, week_col = "  ", today_color = "#9932CC" }
+mycalendar:attach(mytextclock)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
