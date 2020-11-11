@@ -132,7 +132,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Battery widget
 -- From deficient's GitHub
-mybatterywidget = require("battery-widget") {widget_font = font}
+mybatterywidget = require("battery-widget") { adapter = "BAT0", ac = "AC", widget_font = font}
 
 -- {{{ Wibar
 -- Create a textclock widget
