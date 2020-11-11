@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote manoj-dark))
  '(menu-bar-mode nil)
- '(package-selected-packages (quote (xclip markdown-mode))))
+ '(package-selected-packages (quote (lua-mode xclip markdown-mode))))
 
 ;; Disabling the start-up message
 (setq inhibit-startup-message t)
