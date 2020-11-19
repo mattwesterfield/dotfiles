@@ -131,8 +131,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Battery widget
--- From deficient's GitHub
 mybatterywidget = require("battery-widget") { adapter = "BAT0", ac = "AC", widget_font = font}
+
+-- Volume control
+myvolumecontrol = require("volume-control") {}
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -250,6 +252,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            myvolumecontrol.widget,
             mybatterywidget,
             wibox.widget.systray(),
             mytextclock,
@@ -377,18 +380,21 @@ globalkeys = gears.table.join(
 
     -- Matt's extra keybindings
     awful.key({ modkey }, "d", function() xrandr.xrandr() end,
-              {description = "set displays", group = "awesome"})
+              {description = "set displays", group = "awesome"}),
+    awful.key({ modkey }, "f", function() awful.spawn.with_shell([[flameshot gui]]) end,
+              {description = "screenshot", group = "awesome"})
     -- awful.key({ modkey }, "l", function() awful.spawn([[xscreensaver-command -lock]]) end,
     --           {description = "set displays", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "toggle fullscreen", group = "client"}),
+    -- Commented out to not conflict with flameshot
+    -- awful.key({ modkey,           }, "f",
+    --     function (c)
+    --         c.fullscreen = not c.fullscreen
+    --         c:raise()
+    --     end,
+    --     {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
