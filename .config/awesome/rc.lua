@@ -382,9 +382,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "d", function() xrandr.xrandr() end,
               {description = "set displays", group = "awesome"}),
     awful.key({ modkey }, "f", function() awful.spawn.with_shell([[flameshot gui]]) end,
+              {description = "screenshot", group = "awesome"}),
+    awful.key({ modkey }, "c", function() awful.spawn.with_shell([[caja]]) end,
               {description = "screenshot", group = "awesome"})
-    -- awful.key({ modkey }, "l", function() awful.spawn([[xscreensaver-command -lock]]) end,
-    --           {description = "set displays", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
