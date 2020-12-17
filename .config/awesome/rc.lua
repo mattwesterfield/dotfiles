@@ -251,8 +251,8 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             myvolumecontrol.widget,
+            mykeyboardlayout,
             mybatterywidget,
             wibox.widget.systray(),
             mytextclock,
@@ -631,3 +631,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell([[compton]])
 --awful.spawn.with_shell([[nitrogen --restore]])
 awful.spawn.with_shell([[nm-applet]])
+-- Default to Colemak
+awful.spawn.with_shell([[setxkbmap us -variant colemak]])
