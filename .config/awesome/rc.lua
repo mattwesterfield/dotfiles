@@ -384,7 +384,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "f", function() awful.spawn.with_shell([[flameshot gui]]) end,
               {description = "screenshot", group = "awesome"}),
     awful.key({ modkey }, "c", function() awful.spawn.with_shell([[caja]]) end,
-              {description = "screenshot", group = "awesome"})
+              {description = "file manager", group = "awesome"}),
+    -- Keyboard layout switching
+    awful.key({ modkey, "Control"}, "c", function() awful.spawn.with_shell([[setxkbmap us -variant colemak]]) end,
+              {description = "colemak", group = "awesome"}),
+    awful.key({ modkey, "Control"}, "q", function() awful.spawn.with_shell([[setxkbmap us]]) end,
+              {description = "qwerty", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
@@ -624,4 +629,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Matt's Startup
 awful.spawn.with_shell([[compton]])
-awful.spawn.with_shell([[nitrogen --restore]])
+--awful.spawn.with_shell([[nitrogen --restore]])
+awful.spawn.with_shell([[nm-applet]])
