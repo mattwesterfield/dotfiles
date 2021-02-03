@@ -3,7 +3,7 @@
 	name = Matt Westerfield
 	email = matt.westerfield@heronsystems.com
 [alias]
-	fdiff = diff --name-only
+    fdiff = diff --name-only
     graph = log --pretty=format:\"%C(auto)%d%Creset %C(cyan)%h%Creset - %C(yellow)%an%Creset, %C(magenta)%ar%Creset : %C(green)%s%Creset\" --graph
 	last = difftool HEAD~1
     # Deletes local copies of branches except master and HEAD
@@ -12,6 +12,15 @@
     }; f"
 [core]
     editor = vim
+[http]
+    postbuffer = 5m
+[core]
+    packedGitLimit = 128m
+    packedGitWindowSize = 128m
+[pack]
+    deltaCacheSize = 128m
+    packSizeLimit = 128m
+    windowMemory = 128m
 # [diff]
 #     tool = winmerge
 #     renameLimit = 10000
