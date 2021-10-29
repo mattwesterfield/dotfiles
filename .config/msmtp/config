@@ -1,0 +1,12 @@
+account matt.westerfield@heronsystems.com
+host matt.westerfield@heronsystems.com@smtp.gmail.com
+port 465
+from matt.westerfield@heronsystems.com
+user matt.westerfield@heronsystems.com
+passwordeval "pass matt.westerfield@heronsystems.com"
+auth on
+tls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/mwesterfield/.config/msmtp/msmtp.log
+tls_starttls off
+

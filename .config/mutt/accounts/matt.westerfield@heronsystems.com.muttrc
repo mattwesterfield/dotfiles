@@ -1,0 +1,22 @@
+# vim: filetype=neomuttrc
+# muttrc file for account matt.westerfield@heronsystems.com
+set realname = "matt.westerfield"
+set from = "matt.westerfield@heronsystems.com"
+set sendmail = "msmtp -a matt.westerfield@heronsystems.com"
+alias me matt.westerfield <matt.westerfield@heronsystems.com>
+set folder = "/home/mwesterfield/.local/share/mail/matt.westerfield@heronsystems.com"
+set header_cache = /home/mwesterfield/.cache/mutt-wizard/matt.westerfield@heronsystems.com/headers
+set message_cachedir = /home/mwesterfield/.cache/mutt-wizard/matt.westerfield@heronsystems.com/bodies
+set mbox_type = Maildir
+set hostname = "heronsystems.com"
+source /usr/local/share/mutt-wizard/switch.muttrc
+set spoolfile = +INBOX
+set postponed = +Drafts
+set trash = +Trash
+set record = +Sent
+set sort_aux = reverse-date-received
+set sort = threads
+
+macro index o "<shell-escape>mw -y matt.westerfield@heronsystems.com<enter>" "run mbsync to sync matt.westerfield@heronsystems.com"
+
+mailboxes `mdir=/home/mwesterfield/.local/share/mail/matt.westerfield@heronsystems.com/; find $mdir -mindepth 1 -type d -name cur | sed -e 's:/cur$:":' -e "s:$mdir:\"=:" | sort | tr '\n' ' '`

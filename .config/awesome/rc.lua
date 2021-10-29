@@ -57,8 +57,12 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 local font = [[Monospace Bold 12]]
 beautiful.font = font
 
+-- Enable gaps
+beautiful.gap_single_client = true
+beautiful.useless_gap = 10
+
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -375,16 +379,22 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+    -- awful.key({ modkey }, "p", function() menubar.show() end,
+    --           {description = "show the menubar", group = "launcher"}),
 
     -- Matt's extra keybindings
     awful.key({ modkey }, "d", function() xrandr.xrandr() end,
               {description = "set displays", group = "awesome"}),
-    awful.key({ modkey }, "f", function() awful.spawn.with_shell([[flameshot gui]]) end,
+    awful.key({ modkey }, "P", function() awful.spawn.with_shell([[flameshot gui]]) end,
               {description = "screenshot", group = "awesome"}),
-    awful.key({ modkey }, "c", function() awful.spawn.with_shell([[caja]]) end,
+    awful.key({ modkey }, "b", function() awful.spawn([[urxvt -e sh -c "ranger"]]) end,
               {description = "file manager", group = "awesome"}),
+    awful.key({ modkey }, "c", function() awful.spawn([[google-chrome]]) end,
+              {description = "internet", group = "awesome"}),
+    awful.key({ modkey }, "e", function() awful.spawn([[urxvt -e sh -c "neomutt"]]) end,
+              {description = "email", group = "awesome"}),
+    awful.key({ modkey }, "l", function() awful.spawn.with_shell([[xtrlock -b]]) end,
+              {description = "lock screen", group = "awesome"}),
     -- Keyboard layout switching
     awful.key({ modkey, "Control"}, "c", function() awful.spawn.with_shell([[setxkbmap us -variant colemak]]) end,
               {description = "colemak", group = "awesome"}),
@@ -633,3 +643,4 @@ awful.spawn.with_shell([[compton]])
 awful.spawn.with_shell([[nm-applet]])
 -- Default to Colemak
 awful.spawn.with_shell([[setxkbmap us -variant colemak]])
+os.execute([[/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &]])
