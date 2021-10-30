@@ -17,6 +17,15 @@ set record = +Sent
 set sort_aux = reverse-date-received
 set sort = threads
 
+bind index,browser \Cn next-entry
+bind index,browser \Cp previous-entry
+bind pager \Cn next-line
+bind pager \Cp previous-line
+# bind pager,browser \e\< top-page
+# bing pager,browser \e< bottom-page
+bind index,pager,browser \Cv half-down
+bind index,pager,browser \ev half-up
+
 macro index o "<shell-escape>mw -y matt.westerfield@heronsystems.com<enter>" "run mbsync to sync matt.westerfield@heronsystems.com"
 
 mailboxes `mdir=/home/mwesterfield/.local/share/mail/matt.westerfield@heronsystems.com/; find $mdir -mindepth 1 -type d -name cur | sed -e 's:/cur$:":' -e "s:$mdir:\"=:" | sort | tr '\n' ' '`

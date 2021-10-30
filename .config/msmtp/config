@@ -1,5 +1,5 @@
 account matt.westerfield@heronsystems.com
-host matt.westerfield@heronsystems.com@smtp.gmail.com
+host smtp.gmail.com
 port 465
 from matt.westerfield@heronsystems.com
 user matt.westerfield@heronsystems.com
