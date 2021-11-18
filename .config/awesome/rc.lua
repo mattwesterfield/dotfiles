@@ -80,7 +80,7 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.top,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
@@ -210,10 +210,10 @@ awful.screen.connect_for_each_screen(function(s)
     -- Matt's setup (with vertical monitors)
     if s.geometry.width >= s.geometry.height then
        -- Default to dwindle tiling on a landscape screen (first)
-       awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
+       awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[#awful.layout.layouts])
     else
        -- Default to bottom tiling on a portrait screen (last)
-       awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[#awful.layout.layouts])
+       awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[#awful.layout.layouts-1])
     end
 
     -- Create a promptbox for each screen
@@ -329,18 +329,18 @@ globalkeys = gears.table.join(
               {description = "quit awesome", group = "awesome"}),
 
     -- Ignore master width / column commands
-    -- awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-    --           {description = "increase master width factor", group = "layout"}),
-    -- awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-    --           {description = "decrease master width factor", group = "layout"}),
-    -- awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-    --           {description = "increase the number of master clients", group = "layout"}),
-    -- awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-    --           {description = "decrease the number of master clients", group = "layout"}),
-    -- awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-    --           {description = "increase the number of columns", group = "layout"}),
-    -- awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-    --           {description = "decrease the number of columns", group = "layout"}),
+    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+              {description = "increase master width factor", group = "laUyout"}),
+    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+              {description = "decrease master width factor", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+              {description = "increase the number of master clients", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+              {description = "decrease the number of master clients", group = "layout"}),
+    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+              {description = "increase the number of columns", group = "layout"}),
+    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+              {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
@@ -385,15 +385,15 @@ globalkeys = gears.table.join(
     -- Matt's extra keybindings
     awful.key({ modkey }, "d", function() xrandr.xrandr() end,
               {description = "set displays", group = "awesome"}),
-    awful.key({ modkey }, "P", function() awful.spawn.with_shell([[flameshot gui]]) end,
+    awful.key({ modkey }, "p", function() awful.spawn.with_shell([[flameshot gui]]) end,
               {description = "screenshot", group = "awesome"}),
-    awful.key({ modkey }, "b", function() awful.spawn([[urxvt -e sh -c "ranger"]]) end,
+    awful.key({ modkey }, "f", function() awful.spawn([[urxvt -e sh -c "ranger"]]) end,
               {description = "file manager", group = "awesome"}),
     awful.key({ modkey }, "c", function() awful.spawn([[google-chrome]]) end,
               {description = "internet", group = "awesome"}),
     awful.key({ modkey }, "e", function() awful.spawn([[urxvt -e sh -c "neomutt"]]) end,
               {description = "email", group = "awesome"}),
-    awful.key({ modkey }, "l", function() awful.spawn.with_shell([[xtrlock -b]]) end,
+    awful.key({ modkey }, "i", function() awful.spawn.with_shell([[xtrlock -b]]) end,
               {description = "lock screen", group = "awesome"}),
     -- Keyboard layout switching
     awful.key({ modkey, "Control"}, "c", function() awful.spawn.with_shell([[setxkbmap us -variant colemak]]) end,
