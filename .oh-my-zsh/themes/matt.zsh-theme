@@ -1,4 +1,4 @@
-# fino-time.zsh-theme
+# Based on fino-time.zsh-theme
 
 # Use with a dark background and 256-color terminal!
 # Meant for people with RVM and git. Tested only on OS X 10.7.
@@ -30,7 +30,7 @@ PROMPT="╭─%{$FG[009]%}%n%{$reset_color%} %{$FG[240]%}at%{$reset_color%} %{$F
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$FG[239]%}on%{$reset_color%} %{$fg[255]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[202]%}✘✘✘"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[040]%}✔"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[202]%}xxx"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[040]%}\U2713"
 ZSH_THEME_RUBY_PROMPT_PREFIX=" %{$FG[239]%}using%{$FG[243]%} ‹"
 ZSH_THEME_RUBY_PROMPT_SUFFIX="›%{$reset_color%}"
