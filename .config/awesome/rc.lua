@@ -22,8 +22,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- Load Debian menu entries
-local debian = require("debian.menu")
+-- Load Debian menu entries (uncomment for Ubuntu)
+--local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- {{{ Error handling
@@ -638,9 +638,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Matt's Startup
-awful.spawn.with_shell([[compton]])
---awful.spawn.with_shell([[nitrogen --restore]])
+awful.spawn.with_shell([[picom]])
+awful.spawn.with_shell([[nitrogen --restore]])
 awful.spawn.with_shell([[nm-applet]])
 -- Default to Colemak
 awful.spawn.with_shell([[setxkbmap us -variant colemak]])
-os.execute([[/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &]])
+--os.execute([[/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &]])
