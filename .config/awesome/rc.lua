@@ -387,7 +387,7 @@ globalkeys = gears.table.join(
               {description = "set displays", group = "awesome"}),
     awful.key({ modkey }, "p", function() awful.spawn.with_shell([[flameshot gui]]) end,
               {description = "screenshot", group = "awesome"}),
-    awful.key({ modkey }, "f", function() awful.spawn([[urxvt -e sh -c "ranger"]]) end,
+    awful.key({ modkey }, "f", function() awful.spawn([[alacritty -e sh -c "ranger"]]) end,
               {description = "file manager", group = "awesome"}),
     awful.key({ modkey }, "c", function() awful.spawn([[google-chrome]]) end,
               {description = "internet", group = "awesome"}),
