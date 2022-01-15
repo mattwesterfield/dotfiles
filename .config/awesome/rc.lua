@@ -389,7 +389,7 @@ globalkeys = gears.table.join(
               {description = "screenshot", group = "awesome"}),
     awful.key({ modkey }, "f", function() awful.spawn([[alacritty -e sh -c "ranger"]]) end,
               {description = "file manager", group = "awesome"}),
-    awful.key({ modkey }, "c", function() awful.spawn([[google-chrome]]) end,
+    awful.key({ modkey }, "c", function() awful.spawn([[chromium]]) end,
               {description = "internet", group = "awesome"}),
     awful.key({ modkey }, "e", function() awful.spawn([[urxvt -e sh -c "neomutt"]]) end,
               {description = "email", group = "awesome"}),
