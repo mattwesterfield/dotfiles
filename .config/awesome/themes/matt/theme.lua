@@ -122,6 +122,9 @@ theme.cal = lain.widget.cal(
    }
 )
 
+-- Keyboard map indicator
+mykeyboardlayout = awful.widget.keyboardlayout()
+
 -- Taskwarrior
 local task = wibox.widget.imagebox(theme.widget_task)
 lain.widget.contrib.task.attach(task,
@@ -336,10 +339,12 @@ function theme.at_screen_connect(s)
                     layout = wibox.layout.fixed.horizontal,
                     -- System tray
                     wibox.widget.systray(),
+                    -- Keyboard layout
+                    mykeyboardlayout,
                     -- Volume
                     volicon,
                     theme.volume.widget,
-                    -- Task Warrior Widget
+                    -- Task Warrior widget
                     arrow(theme.bg_normal, "#353535"),
                     wibox.container.background(wibox.container.margin(task, dpi(3), dpi(7)), "#353535"),
                     -- Memory widget
