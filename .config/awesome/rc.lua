@@ -496,6 +496,13 @@ globalkeys = mytable.join(
         end,
         {description = "screenshot", group = "awesome"}
     ),
+    awful.key({ modkey }, "a",
+        -- "a" for alsamixer
+        function()
+            awful.spawn([[alacritty -e sh -c alsamixer]])
+        end,
+        {description = "volume", group = "awesome"}
+    ),
     awful.key({ modkey, "Shift" }, "l",
         -- "l" for lock
         function()
