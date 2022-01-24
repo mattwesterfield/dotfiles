@@ -117,7 +117,7 @@ theme.cal = lain.widget.cal(
         week_start = 1,
         notification_preset =
             {
-                font = "Terminus 10",
+                font = "Monospace 10",
                 fg = theme.fg_normal,
                 bg = theme.bg_normal
             }
