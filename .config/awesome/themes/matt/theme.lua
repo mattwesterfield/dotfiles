@@ -207,7 +207,7 @@ local cpu = lain.widget.cpu(
 local fsicon = wibox.widget.imagebox(theme.widget_hdd)
 theme.fs = lain.widget.fs(
     {
-         notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Terminus 10" },
+         notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Monospace 10" },
          followtag = true,
          settings =
              function()
