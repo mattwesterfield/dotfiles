@@ -178,8 +178,8 @@ local function factory(args)
                     awful.button({}, 1, cal.prev),
                     awful.button({}, 3, cal.next),
                     awful.button({}, 2, cal.hover_on),
-                    awful.button({}, 5, cal.prev),
-                    awful.button({}, 4, cal.next)))
+                    awful.button({}, 4, cal.prev),
+                    awful.button({}, 5, cal.next)))
     end
 
     for _, widget in pairs(cal.attach_to) do cal.attach(widget) end

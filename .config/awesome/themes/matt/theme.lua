@@ -113,9 +113,11 @@ theme.cal = lain.widget.cal(
     {
         --cal = "cal --color=always",
         attach_to = { clock },
+        followtag = true,
+        week_start = 1,
         notification_preset =
             {
-                font = "Terminus 10",
+                font = "Monospace 10",
                 fg = theme.fg_normal,
                 bg = theme.bg_normal
             }
@@ -130,7 +132,8 @@ local task = wibox.widget.imagebox(theme.widget_task)
 lain.widget.contrib.task.attach(task,
     {
         -- do not colorize output
-        show_cmd = "task | sed -r 's/\\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g'"
+        show_cmd = "task | sed -r 's/\\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g'",
+        followtag = true
     }
 )
 task:buttons(my_table.join(awful.button({}, 1, lain.widget.contrib.task.prompt)))
@@ -204,7 +207,8 @@ local cpu = lain.widget.cpu(
 local fsicon = wibox.widget.imagebox(theme.widget_hdd)
 theme.fs = lain.widget.fs(
     {
-         notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Terminus 10" },
+         notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Monospace 10" },
+         followtag = true,
          settings =
              function()
                  local fsp = string.format(" %3.2f %s ", fs_now["/"].free, fs_now["/"].units)
