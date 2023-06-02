@@ -1,48 +1,57 @@
-;; Setting the theme and turning off the menu bar
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote manoj-dark))
- '(menu-bar-mode nil)
- '(package-selected-packages (quote (dockerfile-mode lua-mode xclip markdown-mode))))
+;;; init.el -*- lexical-binding: t; -*-
+;;
+;; Author:  Henrik Lissner <contact@henrik.io>
+;; URL:     https://github.com/hlissner/doom-emacs
+;;
+;;   =================     ===============     ===============   ========  ========
+;;   \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
+;;   ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
+;;   || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||
+;;   ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||
+;;   || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . ||
+;;   ||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .||
+;;   || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . ||
+;;   ||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.||
+;;   ||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `||
+;;   ||    `'         || ||         `'    || ||    `'         || ||   | \  / |   ||
+;;   ||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   ||
+;;   ||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   ||
+;;   ||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   ||
+;;   ||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||
+;;   ||.=='    _-'                                                     `' |  /==.||
+;;   =='    _-'                                                            \/   `==
+;;   \   _-'                                                                `-_   /
+;;    `''                                                                      ``'
+;;
+;; These demons are not part of GNU Emacs.
+;;
+;;; License: MIT
 
-;; Disabling the start-up message
-(setq inhibit-startup-message t)
+;; In the strange case that early-init.el wasn't loaded (e.g. you're using
+;; Chemacs 1? Or you're loading this file directly?), we do it explicitly:
+(unless (boundp 'doom-version)
+  (load (concat (file-name-directory load-file-name) "early-init")
+        nil t))
 
-;; Enabling line numbers
-(global-linum-mode t)
+;; Ensure Doom's core libraries are properly initialized, autoloads file is
+;; loaded, and hooks set up for an interactive session.
+(doom-initialize)
 
-;; Disabling automatic back-up and lock files
-(setq make-backup-files nil)
-(setq create-lockfiles nil)
-
-;; Enabling the mouse
-(xterm-mouse-mode 1)
-
-;; Set tabbing for C/C++
-(setq-default indent-tabs-mode nil)
-(setq tab-width 4)
-(setq-default tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
-
-;; Enable copy/pasta with external applications
-(setq select-enable-clipboard t)
-(setq x-select-enable-clipboard t)
-(add-to-list 'load-path "~/.emacs.d/elpa/xclip-1.10/")
-(require 'xclip)
-(xclip-mode 1)
-
-;; TODO: MELPA
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
-(package-initialize)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Now we load all enabled modules in the order dictated by your `doom!' block
+;; in $DOOMDIR/init.el. `doom-initialize-modules' loads them (and hooks) in the
+;; given order:
+;;
+;;   $DOOMDIR/init.el
+;;   {$DOOMDIR,~/.emacs.d}/modules/*/*/init.el
+;;   `doom-before-init-modules-hook'
+;;   {$DOOMDIR,~/.emacs.d}/modules/*/*/config.el
+;;   `doom-init-modules-hook'
+;;   $DOOMDIR/config.el
+;;   `doom-after-init-modules-hook'
+;;   `after-init-hook'
+;;   `emacs-startup-hook'
+;;   `doom-init-ui-hook'
+;;   `window-setup-hook'
+;;
+;; And then we're good to go!
+(doom-initialize-modules)
